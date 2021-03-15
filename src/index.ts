@@ -1,4 +1,4 @@
-import {
+import type {
   PluginOptions,
   AuthAccessCallback,
   AuthCallback,
@@ -8,19 +8,22 @@ import {
   Logger,
 } from '@verdaccio/types';
 
-import { CustomConfig } from '../types/index';
+import { CustomConfig } from '../types';
 
 /**
  * Custom Verdaccio Authenticate Plugin.
  */
 export default class AuthCustomPlugin implements IPluginAuth<CustomConfig> {
   public logger: Logger;
+
   private foo: string;
+
   public constructor(config: CustomConfig, options: PluginOptions<CustomConfig>) {
     this.logger = options.logger;
     this.foo = config.foo;
     return this;
   }
+
   /**
    * Authenticate an user.
    * @param user user to log
